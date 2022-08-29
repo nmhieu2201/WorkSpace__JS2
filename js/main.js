@@ -100,28 +100,20 @@ const changeIts = () => {
   console.log(this);
 };
 const renderGlassesListImage = () => {
-  const glassImage = dataGlasses.map((glass) => glass.src);
-  let urlImage = "";
-  for (let img of glassImage) {
-    urlImage += `
+  for (let img of dataGlasses) {
+    let urlImage = `
         <div class="img"  style="display: flex;flex-direction: column;justify-content: center">
-         <img id='img-class' style="width: 100px;cursor: pointer;" src="${img}" alt="" />
+         <img id='img-class' style="width: 100px;cursor: pointer;" src="${img.src}" alt="" />
         </div>
     `;
-  }
-
-  const eleGlass = document.querySelector("#vglassesList");
-  const html = `
-        ${urlImage}
-  `;
-  eleGlass.insertAdjacentHTML("afterbegin", html);
-  const imgElArray = document.querySelectorAll("#img-class");
-  for (let imgEl of imgElArray) {
-    imgEl.addEventListener("click", () => renderGlassBySrc(imgEl.src));
+    const eleGlass = document.querySelector("#vglassesList");
+    eleGlass.insertAdjacentHTML("afterbegin", urlImage);
+    const imgEl = document.getElementById("img-class");
+    imgEl.addEventListener("click", () => renderGlassBySrc(img));
   }
 };
-const renderGlassBySrc = (src) => {
-  console.log(`Do something with ${src}`);
+const renderGlassBySrc = (glass) => {
+  console.log(`Do something with ${glass}`, glass);
 };
 
 window.onload = () => {
