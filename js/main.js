@@ -111,6 +111,7 @@ const renderGlassesListImage = () => {
   }
 };
 const renderGlassBySrc = (glass) => {
+
   const eleGlass2 = document.querySelector('#glassesInfo');
   const eleGlass1 = document.querySelector("#avatar");
   const html1 = `
@@ -126,6 +127,7 @@ const renderGlassBySrc = (glass) => {
   `
   eleGlass1.insertAdjacentHTML("afterbegin", html1);
   eleGlass2.insertAdjacentHTML("afterbegin", html2);
+
 };
 
 window.onload = () => {
