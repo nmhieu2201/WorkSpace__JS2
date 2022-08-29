@@ -96,28 +96,39 @@ let dataGlasses = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit consequatur soluta ad aut laborum amet.",
   },
 ];
-const glassImage = dataGlasses.map((glass) =>glass.src);
-let urlImage = "";
-for (let img of glassImage){
-     urlImage += `
-        <div class="img" style="display: flex;flex-direction: column;justify-content: center">
-         <img style="width: 100px;cursor: pointer;" src="${img}" alt="" />
-        </div>
-    `
-}
+const changeIts = () => {
+  console.log(this);
+};
 const renderGlassesListImage = () => {
+  const glassImage = dataGlasses.map((glass) => glass.src);
+  let urlImage = "";
+  for (let img of glassImage) {
+    urlImage += `
+        <div class="img"  style="display: flex;flex-direction: column;justify-content: center">
+         <img id='img-class' style="width: 100px;cursor: pointer;" src="${img}" alt="" />
+        </div>
+    `;
+  }
+
   const eleGlass = document.querySelector("#vglassesList");
   const html = `
         ${urlImage}
-  `
+  `;
   eleGlass.insertAdjacentHTML("afterbegin", html);
+  const imgElArray = document.querySelectorAll("#img-class");
+  for (let imgEl of imgElArray) {
+    imgEl.addEventListener("click", () => renderGlassBySrc(imgEl.src));
+  }
+};
+const renderGlassBySrc = (src) => {
+  console.log(`Do something with ${src}`);
 };
 
 window.onload = () => {
-    renderGlassesListImage();
+  renderGlassesListImage();
 };
 const renderGlass = () => {
-    const glass = document.querySelectorAll("#vglassesList .img img");
-    console.log(glass);
-}   
+  const glass = document.querySelectorAll("#vglassesList .img img");
+  console.log(glass);
+};
 renderGlass();
