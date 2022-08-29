@@ -96,39 +96,38 @@ let dataGlasses = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit consequatur soluta ad aut laborum amet.",
   },
 ];
-const changeIts = () => {
-  console.log(this);
-};
+
 const renderGlassesListImage = () => {
-  const glassImage = dataGlasses.map((glass) => glass.src);
-  let urlImage = "";
-  for (let img of glassImage) {
-    urlImage += `
+  for (let img of dataGlasses) {
+    let urlImage = `
         <div class="img"  style="display: flex;flex-direction: column;justify-content: center">
-         <img id='img-class' style="width: 100px;cursor: pointer;" src="${img}" alt="" />
+         <img id='img-class' style="width: 100px;cursor: pointer;" src="${img.src}" alt="" />
         </div>
     `;
-  }
-
-  const eleGlass = document.querySelector("#vglassesList");
-  const html = `
-        ${urlImage}
-  `;
-  eleGlass.insertAdjacentHTML("afterbegin", html);
-  const imgElArray = document.querySelectorAll("#img-class");
-  for (let imgEl of imgElArray) {
-    imgEl.addEventListener("click", () => renderGlassBySrc(imgEl.src));
+    const eleGlass = document.querySelector("#vglassesList");
+    eleGlass.insertAdjacentHTML("afterbegin", urlImage);
+    const imgEl = document.getElementById("img-class");
+    imgEl.addEventListener("click", () => renderGlassBySrc(img));
   }
 };
-const renderGlassBySrc = (src) => {
-  console.log(`Do something with ${src}`);
+const renderGlassBySrc = (glass) => {
+  const eleGlass2 = document.querySelector('#glassesInfo');
+  const eleGlass1 = document.querySelector("#avatar");
+  const html1 = `
+    <img src="${glass.virtualImg}" />
+  `
+  const html2 = `
+  <h1 class="name">${glass.name} ${glass.brand} (${glass.color})</h1>
+  <span class="cost">${glass.price}$</span>
+  <span class="type">Stoking</span>
+  <h3 class="description">
+      ${glass.description}
+  </h3>
+  `
+  eleGlass1.insertAdjacentHTML("afterbegin", html1);
+  eleGlass2.insertAdjacentHTML("afterbegin", html2);
 };
 
 window.onload = () => {
   renderGlassesListImage();
 };
-const renderGlass = () => {
-  const glass = document.querySelectorAll("#vglassesList .img img");
-  console.log(glass);
-};
-renderGlass();
