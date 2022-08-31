@@ -142,18 +142,16 @@ const renderGlassBySrc = (glass) => {
   eleGlass2.insertAdjacentHTML("afterbegin", html2);
 };
 const removeGlass = () => {
-  let avatar = document.querySelector(".vglasses__model");
+  let avatar = document.querySelector(".vImg");
   let info = document.querySelector(".vglasses__info");
   avatar.style.display = "none";
   info.style.display = "none";
-  console.log("removeGlass");
 };
 const addGlass = () => {
-  let avatar = document.querySelector(".vglasses__model");
+  let avatar = document.querySelector(".vImg");
   let info = document.querySelector(".vglasses__info");
   avatar.style.display = "block";
   info.style.display = "block";
-  console.log("addGlass");
 };
 window.onload = () => {
   renderGlassesListImage();
