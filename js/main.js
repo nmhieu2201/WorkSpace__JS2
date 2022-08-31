@@ -147,12 +147,16 @@ const removeGlass = () => {
   avatar.style.display = "none";
   info.style.display = "none";
 };
+document.getElementById("btn-before").onclick = removeGlass;
+
 const addGlass = () => {
   let avatar = document.querySelector(".vImg");
   let info = document.querySelector(".vglasses__info");
   avatar.style.display = "block";
   info.style.display = "block";
 };
+document.getElementById("btn-after").onclick = addGlass;
+
 window.onload = () => {
   renderGlassesListImage();
 };
