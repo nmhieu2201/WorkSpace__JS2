@@ -109,18 +109,25 @@ const renderGlassesListImage = () => {
     const imgEl = document.getElementById("img-class");
     imgEl.addEventListener("click", () => {
       let info = document.querySelector(".info");
-      if (info){
+
+      let vImg = document.querySelector(".vImg");
+      if (info) {
         info.remove();
+        vImg.remove();
       }
       renderGlassBySrc(img);
     });
   }
 };
+
+
 const renderGlassBySrc = (glass) => {
   const eleGlass2 = document.querySelector("#glassesInfo");
   const eleGlass1 = document.querySelector("#avatar");
   const html1 = `
+    <div class = "vImg">
     <img src="${glass.virtualImg}" />
+    </div>
   `;
   const html2 = `
     <div class="info">
@@ -135,7 +142,18 @@ const renderGlassBySrc = (glass) => {
   eleGlass1.insertAdjacentHTML("afterbegin", html1);
   eleGlass2.insertAdjacentHTML("afterbegin", html2);
 };
-
+const removeGlass = () => {
+  let avatar = document.querySelector(".vglasses__model");
+  let info = document.querySelector(".vglasses__info");
+  avatar.style.display = "none";
+  info.style.display = "none";
+};
+const addGlass = () => {
+  let avatar = document.querySelector(".vglasses__model");
+  let info = document.querySelector(".vglasses__info");
+  avatar.style.display = "block";
+  info.style.display = "block";
+};
 window.onload = () => {
   renderGlassesListImage();
 };
