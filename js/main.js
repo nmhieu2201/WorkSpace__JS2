@@ -107,27 +107,33 @@ const renderGlassesListImage = () => {
     const eleGlass = document.querySelector("#vglassesList");
     eleGlass.insertAdjacentHTML("afterbegin", urlImage);
     const imgEl = document.getElementById("img-class");
-    imgEl.addEventListener("click", () => renderGlassBySrc(img));
+    imgEl.addEventListener("click", () => {
+      let info = document.querySelector(".info");
+      if (info){
+        info.remove();
+      }
+      renderGlassBySrc(img);
+    });
   }
 };
 const renderGlassBySrc = (glass) => {
-
-  const eleGlass2 = document.querySelector('#glassesInfo');
+  const eleGlass2 = document.querySelector("#glassesInfo");
   const eleGlass1 = document.querySelector("#avatar");
   const html1 = `
     <img src="${glass.virtualImg}" />
-  `
+  `;
   const html2 = `
-  <h1 class="name">${glass.name} ${glass.brand} (${glass.color})</h1>
-  <span class="cost">${glass.price}$</span>
-  <span class="type">Stoking</span>
-  <h3 class="description">
-      ${glass.description}
-  </h3>
-  `
+    <div class="info">
+    <h1 class="name">${glass.name} ${glass.brand} (${glass.color})</h1>
+    <span class="cost">${glass.price}$</span>
+    <span class="type">Stoking</span>
+    <h3 class="description">
+        ${glass.description}
+    </h3>
+    </div>
+  `;
   eleGlass1.insertAdjacentHTML("afterbegin", html1);
   eleGlass2.insertAdjacentHTML("afterbegin", html2);
-
 };
 
 window.onload = () => {
