@@ -120,7 +120,6 @@ const renderGlassesListImage = () => {
   }
 };
 
-
 const renderGlassBySrc = (glass) => {
   const eleGlass2 = document.querySelector("#glassesInfo");
   const eleGlass1 = document.querySelector("#avatar");
@@ -147,12 +146,14 @@ const removeGlass = () => {
   let info = document.querySelector(".vglasses__info");
   avatar.style.display = "none";
   info.style.display = "none";
+  console.log("removeGlass");
 };
 const addGlass = () => {
   let avatar = document.querySelector(".vglasses__model");
   let info = document.querySelector(".vglasses__info");
   avatar.style.display = "block";
   info.style.display = "block";
+  console.log("addGlass");
 };
 window.onload = () => {
   renderGlassesListImage();
